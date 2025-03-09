@@ -1,0 +1,23 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+    <form action="/auth/signup" method="POST">
+      <label for="username">
+        User name:
+        <input name="username" id="username" type="text" />
+      </label>
+      <label for="email">
+        Email:
+        <input name="email" id="email" type="email" />
+      </label>
+      <label for="password">
+        Password:
+        <input name="password" id="password" type="password"/>
+      </label>
+      <button type="submit">Sign Up</button>
+    </form>
+  </main>
+  <%-include('partials/footer') -%>
+</body>

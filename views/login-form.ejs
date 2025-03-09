@@ -1,0 +1,19 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+    <form action="/auth/login" method="POST">
+        <label for="email">
+            Email: 
+            <input name="email" id="email" type="email"/>
+        </label>
+        <label for="password">
+            Password: 
+            <input name="password" id="password" type="password"/>
+        </label>
+        <button type="submit">Log In</button>
+    </form>
+  </main>
+  <%-include('partials/footer') -%>
+</body>

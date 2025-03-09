@@ -1,0 +1,60 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+
+    <section id="top">
+      <div class="names">
+        <% if(folders[0].parent){ %>
+        <a href="/folders/<%=folders[0].parent.id %>"><%= folders[0].parent.name %></a>
+        <p> > </p>
+        <% } %>
+        <h3><%= folders[0].name %></h3>
+      </div>
+
+      <div class="share">
+        <% if(!isShared){ %>
+        <% if(folders[0].shareId){ %>
+        <p>/share/<%= folders[0].shareId %></p>
+        <% }else{ %>
+        <a href="/folders/<%=folders[0].id%>/shareCreate/<%=crypto.randomUUID()%>"><button>Share</button></a>
+        <% } %>
+        <% }else{ %>
+        <p> - Folder Shared by: <%=folders[0].user.username %></p>
+        <% } %>
+      </div>
+    </section>
+    <section id="content">
+      <hr />
+      <div class="folders">
+        <% if(!isShared){ %>
+        <%-include('partials/folder-card', {isNew: true, folders: folders})-%>
+
+
+        <% folders[0].children.map((folder) =>{ %>
+        <%-include('partials/folder-card', {isNew: false, folder:folder})-%>
+        <% }) %>
+        <% } %>
+      </div>
+      <hr />
+      <div class="files">
+        <% if(!isShared){ %>
+        <%-include('partials/file-card', {isNew:true, folders: folders}) %>
+        <% } %>
+
+        <% folders[0].files.map((file) =>{ %>
+        <% if(!isShared){ %>
+        <% shared = false %>
+        <% }else{ %>
+        <% shared = true %>
+        <% } %>
+
+        <%-include('partials/file-card', {isNew:false, isShared:shared, folders: folders, file: file}) %>
+        <% }) %>
+      </div>
+    </section>
+
+  </main>
+  <%-include('partials/footer') -%>
+</body>

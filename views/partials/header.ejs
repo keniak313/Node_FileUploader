@@ -1,3 +1,10 @@
 <header>
-    <p>Header</p>
+  <a href="/">HOME</a>
+  <% if (!locals.currentUser) { %>
+    <a href="/auth/login">Log-In</a>
+    <a href="/auth/signup">Sign-Up</a>
+    <% }else{ %>
+    <p>Logged in as: <%= locals.currentUser.username %></p>
+    <a href="/auth/logout">Logout</a>
+  <% } %>
 </header>

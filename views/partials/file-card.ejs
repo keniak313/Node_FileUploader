@@ -1,0 +1,14 @@
+
+<% if(isNew){ %>
+    <a href="/upload/<%=folders[0].id%>" class="file">Upload</a>
+<% }else{ %>
+    <% if(isShared) { %>
+        <% path = `/share/${folders[0].shareId}/files/${file.id}` %>
+    <% }else{ %>
+        <% path = `/folders/${folders[0].id}/files/${file.id}` %>
+    <% } %>
+    <a href=<%=path %> class="file">
+        <p><%= file.name %></p>
+        <img src="<%=file.url %>" />   
+    </a>
+<% } %>

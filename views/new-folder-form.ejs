@@ -1,0 +1,19 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main style="display: flex; flex-direction: column; justify-content: start; align-items: center;">
+    <h3>Create Folder:</h3>
+    <% if(parent){ %>
+        <p>Parent: <%=parent.name%></p>
+    <% } %>
+    <form action=<%= parent ? `/new-folder/${parent.id}` : '/new-folder' %>  method="POST">
+      <label for="name">
+        Name:
+        <input name="name" id="name" type="text" value="New Folder" required/>
+      </label>
+      <button type="submit">Create</button>
+    </form>
+  </main>
+  <%-include('partials/footer') -%>
+</body>

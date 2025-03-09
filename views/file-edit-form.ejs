@@ -1,0 +1,28 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+    <form action="/folders/<%= file.folderId %>/files/<%= file.id%>/edit-file" method="POST">
+      <label for="name">
+        Name:
+        <input name="name" id="name" value="<%=file.name %>" />
+      </label>
+      <label for="folder">Folder:
+        <select name="folder" id="folder">
+          <% folders.map((folder) =>{ %>
+          <% if (folder.id === file.folderId){ %>
+          <% isSelected = true %>
+          <% }else{ %>
+          <% isSelected = false %>
+          <% } %>
+          <option value="<%=folder.id%>" <%=isSelected && "selected"%>><%=folder.name %></option>
+          <% }) %>
+        </select>
+      </label>
+      <button type="submit">Confirm Edit</button>
+    </form>
+    <a href="/folders/<%=file.folderId%>">Go back</a>
+  </main>
+  <%-include('partials/footer') -%>
+</body>

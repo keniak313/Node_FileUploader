@@ -1,0 +1,18 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+    <h3><%= file.name %></h3>
+    <p>Created: <%= file.createdAt.getDate() %> / <%= file.createdAt.getMonth() + 1%> / <%= file.createdAt.getFullYear() %></p>
+    <img src="<%=file.url%>" style="max-width: 90vw;" />
+
+    <% if(!isShared) { %>
+    <div>
+      <a href="/folders/<%= file.folderId %>/files/<%= file.id%>/edit-file"><button>Edit</button></a>
+      <a href="/folders/<%= file.folderId %>/files/<%= file.id%>/remove-file" onclick="return confirm('Remove?');"><button>Remove</button></a>
+    </div>
+    <% } %>
+  </main>
+  <%-include('partials/footer') -%>
+</body>

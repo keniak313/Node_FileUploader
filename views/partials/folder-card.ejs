@@ -1,0 +1,7 @@
+<% if(isNew){ %>
+<a href="/new-folder/<%=folders[0].id %>" class="folder"><button>NEW</button></a>
+<% }else{ %>
+<a href="/folders/<%=folder.id %>" class="folder">
+    <p><%=folder.name%></p>    
+</a>
+<% } %>

@@ -1,0 +1,16 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+    <h3>Upload file:</h3>
+    <form action="/upload/<%=id%>" method="POST" enctype="multipart/form-data" class="upload">
+      <label for="uploaded_file">
+        File:
+        <input type="file" name="uploaded_file" id="uploaded_file" />
+      </label>
+      <button type="submit">Upload</button>
+    </form>
+  </main>
+  <%-include('partials/footer') -%>
+</body>
